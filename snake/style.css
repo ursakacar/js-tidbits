@@ -1,0 +1,25 @@
+body { 
+    background-color: #f7f7f7;
+    margin: 5%
+}
+
+.grid {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    border-style: solid;
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.snake {
+    background-color: darkblue;
+}
+
+.apple {
+    background-color: crimson;
+}

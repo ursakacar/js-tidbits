@@ -1,0 +1,26 @@
+body {
+    background-color: #394867; 
+    margin: 10%;
+}
+
+h1, .gamelist {
+    padding: 5%;
+    background-color: #9ba4b4;
+    border-radius: 15px;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+    color: #14274e
+}
+
+a {
+    text-decoration: none;
+    color: #14274e
+    
+}
+
+.gamelist-item {
+    font-size: 25px;
+}
