@@ -1,0 +1,73 @@
+body {
+  background-color: #454545;
+}
+
+#stopwatch-total {
+  font-size: 4em;
+}
+
+#stopwatch-lap {
+  font-size: 7em;
+}
+
+#name-total {
+  font-size: 1.5em;
+}
+
+#name-lap {
+  font-size: 2em;
+}
+
+input,
+button {
+  border: 2px solid;
+  color: #F1FFFA;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.stopwatch-wrapper {
+  padding: 4rem;
+}
+
+.stopwatch-ui {
+  letter-spacing: 5px;
+  text-align: center;
+  color: #F1FFFA;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.name {
+  text-align: center;
+  color: #D6D6D6;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+.btn-total {
+  background: #C98CA7;
+  border: #C98CA7;
+  width: 120px;
+  height: 60px;
+  font-size: 1em;
+}
+
+.btn-lap {
+  background: #73A2AB;
+  border: #73A2AB;
+  width: 150px;
+  height: 70px;
+  font-size: 1.5em;
+}
+
+.youtube-videos {
+  display: flex;
+  justify-content: center;
+  opacity: 0.7;
+  margin-top: 5rem;
+}

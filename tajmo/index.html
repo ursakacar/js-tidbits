@@ -1,0 +1,40 @@
+<!DOCTYPE html lang="en-US">
+<html>
+<head>
+    <link rel='stylesheet' href='style.css'>
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <title>Pick your tajmo</title>
+</head>
+
+<body id='body'>
+
+    <div id='title' class='text'>
+        <div>Happy birthday Buno!</div>
+        <div id='subtitle'>Pick your favourite device to gauge tajmo</div>
+    </div>
+
+    <div id='final-wrap' class='zero-opacity'>
+        <div class='final-panel panel'>
+            <img id='final-watch' src='./images/bdbuno.jpeg'>
+            <form id='send-watch-form' action='https://formspree.io/4050.32@gmail.com' method='POST'/>
+                <input id='final-watch-url' class='zero-opacity' type='text' name='name' placeholder='Buns'>
+                <input id='send-button' class='button' type='submit' value='Send' disabled>
+            </form>
+        </div>
+    </div>
+
+    <div class='selection-panel panel'>
+        <img id='selected-watch' src='./images/bdbuno.jpeg'>
+
+        <div id='watches-panel'></div>
+    </div>
+
+    <div id='footer' class='text'>
+        <div>I love you</div>
+        <div id='subfooter'>your Buca</div>
+    </div>
+
+    <script src='script.js'></script>
+</body>
+
+</html>
