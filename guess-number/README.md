@@ -6,8 +6,6 @@ Seriously unpolished & just for fun.
 
 https://ursakacar.github.io/js-tidbits/
 
-### Guess Number!
-
 ### Random Question
 
 ### Snake
