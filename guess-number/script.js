@@ -2,13 +2,14 @@
 
 'use strict'
 
-let score, secretNumber, highscore
+let score, secretNumber, highscore, isGamePlaying
 
 highscore = 0
 init()
 
 function init() {
   score = 10
+  isGamePlaying = true
   secretNumber = Math.trunc(Math.random() * 20) + 1
   document.querySelector('.number').style.width = '15rem'
   document.querySelector('.number').textContent = '?'
@@ -26,26 +27,7 @@ function checkHighscore() {
   }
 }
 
-function gameLost() {
-  document.querySelector('.message').textContent = 'You LOSE!'
-  document.querySelector('body').style.backgroundColor = '#900705'
-  document.querySelector('.check').style.display = 'none'
-}
-
-function gameWon() {
-  document.querySelector('.message').textContent = 'You WIN!'
-  document.querySelector('body').style.backgroundColor = '#1b998b'
-  document.querySelector('.number').textContent = secretNumber
-  document.querySelector('.number').style.width = '30rem'
-  document.querySelector('.check').style.display = 'none'
-  checkHighscore()
-}
-
-document.querySelector('.again').addEventListener('click', function () {
-  init()
-})
-
-document.querySelector('.check').addEventListener('click', function () {
+function checkNumber() {
   const guessedNumber = Number(document.querySelector('.guess').value)
 
   if (score == 0) {
@@ -62,5 +44,36 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.score').textContent = score
     document.querySelector('.message').textContent =
       guessedNumber > secretNumber ? 'Too high!' : 'Too low!'
+  }
+}
+
+function gameLost() {
+  isGamePlaying = false
+  document.querySelector('.message').textContent = 'You LOSE!'
+  document.querySelector('body').style.backgroundColor = '#900705'
+  document.querySelector('.check').style.display = 'none'
+}
+
+function gameWon() {
+  isGamePlaying = false
+  document.querySelector('.message').textContent = 'You WIN!'
+  document.querySelector('body').style.backgroundColor = '#1b998b'
+  document.querySelector('.number').textContent = secretNumber
+  document.querySelector('.number').style.width = '30rem'
+  document.querySelector('.check').style.display = 'none'
+  checkHighscore()
+}
+
+document.querySelector('.again').addEventListener('click', function () {
+  init()
+})
+
+document.querySelector('.check').addEventListener('click', checkNumber)
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    if (!isGamePlaying) {
+      init()
+    } else checkNumber()
   }
 })
