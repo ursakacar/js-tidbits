@@ -57,7 +57,7 @@ a {
   font-size: 22px;
   margin-bottom: 2%;
   text-align: center;
-  margin: 15px 0px 5px 15px;
+  margin: 15px;
 }
 
 .tidbit {
@@ -95,11 +95,11 @@ a {
 }
 
 .tidbit--headercolor3 {
-  border-color: #aca6dc;
+  border-color: #7cdedc;
 }
 
 .tidbit--headercolor4 {
-  border-color: #f194d1;
+  border-color: #f3b02b;
 }
 
 /* retro theme */
@@ -143,5 +143,5 @@ a {
 }
 
 .wallpaper--retro .tidbit--headercolor4 {
-  border-color: #edc218;
+  border-color: #f3b02b;
 }
