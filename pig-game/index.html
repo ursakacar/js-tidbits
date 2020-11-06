@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/jpg" href="favicon.png"/>
+        <link type="text/css" rel="stylesheet" href="style.css">
+        
+        <title>Pig Game</title>
+    </head>
+
+    <body>
+        <div class="wrapper clearfix">
+            <div class="player-0-panel active">
+                <div class="player-name" id="name-0">Player 1</div>
+                <div class="player-score" id="score-0">43</div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-0">11</div>
+                </div>
+            </div>
+            
+            <div class="player-1-panel">
+                <div class="player-name" id="name-1">Player 2</div>
+                <div class="player-score" id="score-1">72</div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-1">0</div>
+                </div>
+            </div>
+            
+            <div class="wrapper-buttons">
+                <button class="btn-popover-instructions"><i class="ion-ios-book-outline"></i>Instructions</button>
+                <button class="btn-popover-settings"><i class="ion-ios-toggle-outline"></i>Settings</button>    
+                <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+                <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+                <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+            </div>
+            
+            <img src="dice-5.png" alt="Dice" class="dice">
+        </div>
+        <div class="popover">
+            <button class="btn-popover-close"><i class="ion-ios-close-outline"></i></button>
+            <div class="popover-instructions">
+                    <div class="instructions-title">Instructions</div>
+                    <div class="instructions-text">
+                        <ul>
+                            <li>The game has 2 players, playing in rounds</li>
+                            <li> In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score</li>
+                            <li> If the player rolls two 6's in a row, his GLOBAL score gets lost. After that, it's the next player's turn</li>
+                            <li> If the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn</li>
+                            <li> The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn</li>
+                            <li> The first player to reach 100 points on GLOBAL score wins the game</li>
+                            <li> What happens in two dice game</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="popover-settings">
+                    <div class="winning-score">
+                        <div class="winning-score-title">Set winning score</div>
+                        <div class="current-winning-score">
+                            <div class = "current-winning-score-title">Currently needed to win: </div>
+                            <div class = "current-winning-score-title">100 points</div>
+                        </div>
+                        <div class="winning-score">
+                            <input type="number" id="input-set-score">
+                            <button class="btn-set-score">Set score</button>
+                        </div>
+                    </div>
+                    <div class="dice-number">
+                        <div class="dice-number-title">Select number of dice</div>
+                        <div class="dice-number-title">
+                            <input type="radio" id="1-dice" name="gender" value="1 dice">
+                            <label for="1-dice">1-dice</label><br>
+                            <input type="radio" id="2-dice" name="gender" value="2 dice">
+                            <label for="1-dice">2-dice</label><br>
+                        </div>
+                    </div>
+                    <div class="warning-wrapper">
+                        <div class="warning-text">Making any changes will start a new game.</div>
+                    </div>
+                </div>
+            </div>
+                
+        <script src="app.js"></script>
+    </body>
+</html>
