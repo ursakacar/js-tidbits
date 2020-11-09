@@ -9,53 +9,56 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
  
 */
- 
- 
+
 // make buttons non interactive when players change
 // make it possible to play with one or two dice
 // add instruction button that shows/hides instruction
 // add ability to add own score
- 
+
+'use strict'
+
 var score, scores, lastDice, roundScore, activePlayer, gamePlaying, setWinningScore
 var winningScore = 100
 
 init()
- 
-document.querySelector(".btn-roll").addEventListener("click", handleRollDice)
-document.querySelector(".btn-hold").addEventListener("click", handleSaveRoundScore)
-document.querySelector(".btn-new").addEventListener("click", init)
-document.querySelector(".btn-popover-close").addEventListener("click", closePopover)
-document.querySelector(".btn-popover-instructions").addEventListener("click", getToggleInstructionsFn(".popover-instructions"))
-document.querySelector(".btn-popover-settings").addEventListener("click", getToggleInstructionsFn(".popover-settings"))
-document.querySelector(".btn-set-score").addEventListener("click", setWinningScore)
 
+document.querySelector('.btn-roll').addEventListener('click', handleRollDice)
+document.querySelector('.btn-hold').addEventListener('click', handleSaveRoundScore)
+document.querySelector('.btn-new').addEventListener('click', init)
+document.querySelector('.btn-popover-close').addEventListener('click', closePopover)
+document.querySelector('.btn-popover-instructions').addEventListener('click', getToggleInstructionsFn('.popover-instructions'))
+document.querySelector('.btn-popover-settings').addEventListener('click', getToggleInstructionsFn('.popover-settings'))
+document.querySelector('.btn-set-score').addEventListener('click', setWinningScore)
 
-function getToggleInstructionsFn (elt) {
+function getToggleInstructionsFn(elt) {
   return function (ev) {
-    document.querySelector(".popover").style.visibility = "visible"
-    document.querySelector(".wrapper-buttons").style.visibility = "hidden"
-    document.querySelector(elt).style.visibility = "visible"
+    document.querySelector('.popover').style.visibility = 'visible'
+    document.querySelector('.wrapper-buttons').style.visibility = 'hidden'
+    document.querySelector('.overlay').style.visibility = 'visible'
+    document.querySelector(elt).style.visibility = 'visible'
   }
 }
 
-function closePopover () {
-  document.querySelector(".popover").style.visibility = "hidden"
-  document.querySelector(".popover-instructions").style.visibility = "hidden"
-  document.querySelector(".popover-settings").style.visibility = "hidden"
-  document.querySelector(".wrapper-buttons").style.visibility = "visible"
+function closePopover() {
+  document.querySelector('.popover').style.visibility = 'hidden'
+  document.querySelector('.popover-instructions').style.visibility = 'hidden'
+  document.querySelector('.popover-settings').style.visibility = 'hidden'
+  document.querySelector('.overlay').style.visibility = 'hidden'
+  document.querySelector('.wrapper-buttons').style.visibility = 'visible'
 }
 
-function setWinningScore () {
-    winningScore = parseInt(document.getElementById("input-set-score").value, 10)
-    closePopover()
-    init()
+function setWinningScore() {
+  winningScore = parseInt(document.getElementById('input-set-score').value, 10)
+  document.getElementById('winning-points').textContent = winningScore
+  closePopover()
+  init()
 }
 
-function handleRollDice () {
+function handleRollDice() {
   if (!gamePlaying) {
     return
   }
- 
+
   const dice = rollDice()
   const twoSixes = dice === 6 && lastDice === 6
   if (twoSixes) {
@@ -66,100 +69,102 @@ function handleRollDice () {
   } else {
     addToRoundScore(dice)
   }
- 
+
   function rollDice() {
     var dice = Math.floor(Math.random() * 6) + 1
-    var diceDom = document.querySelector(".dice")
-    diceDom.classList.remove("hidden")
-    diceDom.style.display = "block"
-    diceDom.src = "dice-" + dice + ".png"
- 
+    var diceDom = document.querySelector('.dice')
+    diceDom.classList.remove('fade-out')
+    diceDom.style.display = 'block'
+    diceDom.src = 'dice-' + dice + '.png'
+    diceDom.style.visibility = 'visible'
+
     return dice
   }
- 
+
   function addToRoundScore(dice) {
     roundScore += dice
-    document.querySelector("#current-" + activePlayer).textContent = roundScore
+    document.querySelector('#current-' + activePlayer).textContent = roundScore
     lastDice = dice
   }
 }
- 
-function handleSaveRoundScore () {
+
+function handleSaveRoundScore() {
   if (!gamePlaying) {
     return
   }
- 
+
   scores[activePlayer] += roundScore
   if (scores[activePlayer] >= winningScore) {
     announceWinner()
   } else {
     nextPlayer()
   }
- 
+
   function announceWinner() {
-    document.querySelector("#name-" + activePlayer).textContent = "Winner!"
-    document.querySelector(".dice").classList.add("hidden")
-    document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active")
-    document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner")
-    document.querySelector(".btn-roll").style.pointerEvents = "none"
-    document.querySelector(".btn-hold").style.pointerEvents = "none"
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]
+    document.querySelector('#name-' + activePlayer).textContent = 'Winner!'
+    document.querySelector('.dice').classList.add('fade-out')
+    document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active')
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner')
+    document.querySelector('.btn-roll').style.pointerEvents = 'none'
+    document.querySelector('.btn-hold').style.pointerEvents = 'none'
     gamePlaying = false
   }
 }
- 
+
 function nextPlayer() {
   resetRoundScore()
- 
-  document.querySelector(".player-0-panel").classList.toggle("active")
-  document.querySelector(".player-1-panel").classList.toggle("active")
- 
-  document.querySelector(".btn-roll").style.pointerEvents = "none"
-  document.querySelector(".btn-hold").style.pointerEvents = "none"
-  document.querySelector(".btn-new").style.pointerEvents = "none"
- 
+
+  document.querySelector('.player-0-panel').classList.toggle('active')
+  document.querySelector('.player-1-panel').classList.toggle('active')
+
+  document.querySelector('.btn-roll').style.pointerEvents = 'none'
+  document.querySelector('.btn-hold').style.pointerEvents = 'none'
+  document.querySelector('.btn-new').style.pointerEvents = 'none'
+
   setTimeout(() => {
-    document.querySelector(".dice").classList.add("hidden")
+    document.querySelector('.dice').classList.add('fade-out')
   }, 1)
- 
+
   setTimeout(() => {
-    document.querySelector(".btn-roll").style.pointerEvents = "all"
-    document.querySelector(".btn-hold").style.pointerEvents = "all"
-    document.querySelector(".btn-new").style.pointerEvents = "all"
+    document.querySelector('.btn-roll').style.pointerEvents = 'all'
+    document.querySelector('.btn-hold').style.pointerEvents = 'all'
+    document.querySelector('.btn-new').style.pointerEvents = 'all'
   }, 800)
- 
-  function resetRoundScore () {
-    document.querySelector("#score-" + activePlayer).textContent = scores[activePlayer]
-    document.querySelector("#current-" + activePlayer).textContent = 0
+
+  function resetRoundScore() {
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]
+    document.querySelector('#current-' + activePlayer).textContent = 0
     activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0)
     roundScore = 0
     lastDice = 0
   }
 }
- 
-function init() {
-    scores = [0, 0]
-    lastDice = 0
-    activePlayer = 0
-    roundScore = 0
-    gamePlaying = true
- 
-    document.querySelector(".dice").classList.add("hidden")
- 
-    document.getElementById("score-0").textContent = "0"
-    document.getElementById("score-1").textContent = "0"
-    document.getElementById("current-0").textContent = "0"
-    document.getElementById("current-1").textContent = "0"
- 
-    document.getElementById("name-0").textContent = "Player 1"
-    document.getElementById("name-1").textContent = "Player 2"
- 
-    document.querySelector(".player-0-panel").classList.remove("active")
-    document.querySelector(".player-0-panel").classList.remove("winner")
-    document.querySelector(".player-1-panel").classList.remove("active")
-    document.querySelector(".player-1-panel").classList.remove("winner")
- 
-    document.querySelector(".player-0-panel").classList.add("active")
 
-    document.querySelector(".btn-roll").style.pointerEvents = "all"
-    document.querySelector(".btn-hold").style.pointerEvents = "all"
+function init() {
+  scores = [0, 0]
+  lastDice = 0
+  activePlayer = 0
+  roundScore = 0
+  gamePlaying = true
+
+  document.querySelector('.dice').style.visibility = 'hidden'
+
+  document.getElementById('score-0').textContent = '0'
+  document.getElementById('score-1').textContent = '0'
+  document.getElementById('current-0').textContent = '0'
+  document.getElementById('current-1').textContent = '0'
+
+  document.getElementById('name-0').textContent = 'Player 1'
+  document.getElementById('name-1').textContent = 'Player 2'
+
+  document.querySelector('.player-0-panel').classList.remove('active')
+  document.querySelector('.player-0-panel').classList.remove('winner')
+  document.querySelector('.player-1-panel').classList.remove('active')
+  document.querySelector('.player-1-panel').classList.remove('winner')
+
+  document.querySelector('.player-0-panel').classList.add('active')
+
+  document.querySelector('.btn-roll').style.pointerEvents = 'all'
+  document.querySelector('.btn-hold').style.pointerEvents = 'all'
 }

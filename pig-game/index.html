@@ -41,47 +41,45 @@
             <img src="dice-5.png" alt="Dice" class="dice">
         </div>
         <div class="popover">
-            <button class="btn-popover-close"><i class="ion-ios-close-outline"></i></button>
             <div class="popover-instructions">
-                    <div class="instructions-title">Instructions</div>
-                    <div class="instructions-text">
-                        <ul>
-                            <li>The game has 2 players, playing in rounds</li>
-                            <li> In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score</li>
-                            <li> If the player rolls two 6's in a row, his GLOBAL score gets lost. After that, it's the next player's turn</li>
-                            <li> If the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn</li>
-                            <li> The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn</li>
-                            <li> The first player to reach 100 points on GLOBAL score wins the game</li>
-                            <li> What happens in two dice game</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="popover-settings">
-                    <div class="winning-score">
-                        <div class="winning-score-title">Set winning score</div>
-                        <div class="current-winning-score">
-                            <div class = "current-winning-score-title">Currently needed to win: </div>
-                            <div class = "current-winning-score-title">100 points</div>
-                        </div>
-                        <div class="winning-score">
-                            <input type="number" id="input-set-score">
-                            <button class="btn-set-score">Set score</button>
-                        </div>
-                    </div>
-                    <div class="dice-number">
-                        <div class="dice-number-title">Select number of dice</div>
-                        <div class="dice-number-title">
-                            <input type="radio" id="1-dice" name="gender" value="1 dice">
-                            <label for="1-dice">1-dice</label><br>
-                            <input type="radio" id="2-dice" name="gender" value="2 dice">
-                            <label for="1-dice">2-dice</label><br>
-                        </div>
-                    </div>
-                    <div class="warning-wrapper">
-                        <div class="warning-text">Making any changes will start a new game.</div>
-                    </div>
+                <div class="instructions-title">Instructions 🐖</div>
+                <div class="instructions-text">
+                    <p>👥 This is a two player game, played in rounds.</p>
+                    <p>🎲 On player's turn, they roll a dice as many times as they wish. Each result gets added to their <b>round score</b>.</p>
+                    <p>🎲 The player can choose to <b>hold</b>, which adds their <b>round score</b> to their <b>global score</b> and ends their turn.</p>
+                    <p>❗ If the player rolls a <b>1</b>, their <b>round score</b> is lost, and they lose their turn</p>
+                    <p>❗ If the player rolls <b>two 6's in a row</b>, their <b>global score</b> is lost, and they lose their turn</p>
+                    <p>🥇 The first player whose <b>global score</b> reaches the winning score, wins the game. The winning score is set to 100 by default.</p>
                 </div>
             </div>
+            <div class="popover-settings">
+                <div class="winning-score">
+                    <div class="winning-score-title">this panel is WIP: Set winning score 🐖</div>
+                    <div class="current-winning-score">
+                        <div class = "current-winning-score-title">Currently needed to win: </div>
+                        <div id = "winning-points" class = "current-winning-score-title">100 points</div>
+                    </div>
+                    <div class="set-winning-score">
+                        <input type="number" min="1"  max="500" id="input-set-score">
+                        <button class="btn-set-score">Set score</button>
+                    </div>
+                </div>
+                <div class="dice-number">
+                    <div class="dice-number-title">Select number of dice</div>
+                    <div class="dice-number-title">
+                        <input type="radio" id="1-dice" name="gender" value="1 dice">
+                        <label for="1-dice">1-dice</label><br>
+                        <input type="radio" id="2-dice" name="gender" value="2 dice">
+                        <label for="1-dice">2-dice</label><br>
+                    </div>
+                </div>
+                <div class="warning-wrapper">
+                    <div class="warning-text"><b>🚨 Warning:</b> Setting a new score will start a new game.</div>
+                </div>
+            </div>
+            <button class="btn-popover-close"><i class="ion-ios-close-outline"></i></button>
+            </div>
+            <div class="overlay"></div>
                 
         <script src="app.js"></script>
     </body>
